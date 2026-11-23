@@ -18,23 +18,22 @@ except Exception:
 
 st.set_page_config(page_title="Secure Climate Intelligence", page_icon="🌦️", layout="wide", initial_sidebar_state="expanded")
 
-pio.templates.default = "plotly_dark"
-
+pio.templates.default = "plotly_white"
 # ---------- Premium Dark Design System ----------
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
 
 :root {
-    --bg: #0B1120;
-    --sidebar: #111B2E;
-    --card: #17243A;
-    --border: #263650;
-    --primary: #3B82F6;
-    --purple: #8B5CF6;
+    --bg: #F1F8FF;
+    --sidebar: #E8F4FF;
+    --card: #FFFFFF;
+    --border: #D6E8F7;
+    --primary: #38BDF8;
+    --purple: #6366F1;
     --success: #10B981;
-    --text: #E8F0FC;
-    --muted: #94A3B8;
+    --text: #183B56;
+    --muted: #647C91;
 }
 
 html, body, [class*="css"] {
@@ -43,9 +42,9 @@ html, body, [class*="css"] {
 
 .stApp {
     background:
-        radial-gradient(circle at 15% 0%, rgba(59,130,246,.13), transparent 28%),
-        radial-gradient(circle at 90% 15%, rgba(139,92,246,.10), transparent 25%),
-        var(--bg);
+        radial-gradient(circle at 10% 0%, rgba(56,189,248,.13), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(147,197,253,.18), transparent 28%),
+        linear-gradient(135deg, #F8FCFF 0%, #EFF8FF 50%, #F5FAFF 100%);
     color: var(--text);
 }
 
@@ -65,8 +64,8 @@ html, body, [class*="css"] {
 
 
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #111827 0%, #0B1120 100%);
-    border-right: 1px solid #263650;
+    background: linear-gradient(180deg, #E0F2FE 0%, #F0F9FF 55%, #FFFFFF 100%);
+    border-right: 1px solid #D6E8F7;
 }
 
 [data-testid="stSidebar"] > div:first-child {
@@ -79,7 +78,7 @@ html, body, [class*="css"] {
 
 
 [data-testid="stSidebar"] * {
-    color: var(--text);
+    color: #183B56;
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label {
@@ -107,30 +106,39 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: rgba(59,130,246,.15);
-    border-color: rgba(59,130,246,.35);
+    background: #E0F2FE;
+    border-color: #BAE6FD;
     transform: translateX(3px);
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label:has(input:checked) {
-    background: linear-gradient(100deg, #1D4ED8, #6D43C8);
-    border-color: #5287F5;
-    box-shadow: 0 4px 15px rgba(59,130,246,.2);
+    background: linear-gradient(100deg, #BAE6FD, #DBEAFE);
+    border-color: #7DD3FC;
+    box-shadow: 0 4px 15px rgba(56,189,248,.12);
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label p {
-    color: #E8F0FC !important;
-    font-weight: 600;
+    color: #075985 !important;
+    font-weight: 700;
 }
 
 
 h1, h2, h3, h4 {
-    color: var(--text) !important;
+    color: #183B56 !important;
     font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+}
+
+h1 {
+    letter-spacing: -0.8px;
+}
+
+h2, h3 {
+    letter-spacing: -0.4px;
 }
 
 p, label, .stMarkdown {
-    color: var(--text);
+    color: #36566F;
 }
 
 .hero {
@@ -185,11 +193,11 @@ p, label, .stMarkdown {
 .kpi {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(145deg, #1B2A43, #142139);
-    border: 1px solid #263650;
+    background: linear-gradient(145deg, #FFFFFF, #F5FAFF);
+    border: 1px solid #D6E8F7;
     border-radius: 18px;
     padding: 22px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+    box-shadow: 0 6px 22px rgba(56, 126, 170, .08);
     min-height: 125px;
     transition: all .25s ease;
 }
@@ -201,17 +209,17 @@ p, label, .stMarkdown {
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(180deg, #3B82F6, #8B5CF6);
+    background: linear-gradient(180deg, #38BDF8, #2563EB);
 }
 
 .kpi:hover {
     transform: translateY(-5px);
-    border-color: #3B82F6;
-    box-shadow: 0 12px 30px rgba(59,130,246,.16);
+    border-color: #7DD3FC;
+    box-shadow: 0 12px 28px rgba(56, 126, 170, .14);
 }
 
 .kpi .label {
-    color: #A9BAD0;
+    color: #647C91;
     font-size: .78rem;
     font-weight: 700;
     letter-spacing: .5px;
@@ -219,14 +227,14 @@ p, label, .stMarkdown {
 
 .kpi .value {
     font-family: 'Space Grotesk', sans-serif;
-    color: #60A5FA;
+    color: #0284C7;
     font-size: 2rem;
     font-weight: 700;
     margin-top: 10px;
 }
 
 .kpi .hint {
-    color: #94A3B8;
+    color: #7890A5;
     font-size: .76rem;
     margin-top: 5px;
 }
@@ -235,17 +243,17 @@ p, label, .stMarkdown {
 
 .panel {
     position: relative;
-    background: linear-gradient(145deg, #1B2B45, #142139);
-    border: 1px solid #2B3D59;
+    background: linear-gradient(145deg, #FFFFFF, #F5FAFF);
+    border: 1px solid #D6E8F7;
     border-radius: 18px;
     padding: 23px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.18);
+    box-shadow: 0 8px 25px rgba(56, 126, 170, .08);
     transition: all .25s ease;
 }
 
 .panel:hover {
-    border-color: #45699B;
-    box-shadow: 0 12px 32px rgba(59,130,246,.10);
+    border-color: #7DD3FC;
+    box-shadow: 0 12px 30px rgba(56, 126, 170, .14);
 }
 
 
@@ -275,26 +283,31 @@ div[data-testid="stMetric"] [data-testid="stMetricValue"] {
     min-height: 42px;
     border-radius: 11px;
     font-weight: 700;
-    border: 1px solid #355078;
-    background: linear-gradient(145deg, #1D2E49, #17243A);
-    color: #E8F0FC;
+    border: 1px solid #BAE6FD;
+    background: linear-gradient(145deg, #FFFFFF, #EAF6FF);
+    color: #075985;
     transition: all .2s ease;
 }
 
 .stButton > button:hover,
 .stDownloadButton > button:hover {
-    border-color: #60A5FA;
-    color: white;
-    background: #263D60;
+    border-color: #38BDF8;
+    color: #0369A1;
+    background: #E0F2FE;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(59,130,246,.15);
+    box-shadow: 0 5px 15px rgba(56,189,248,.15);
 }
 
 .stButton > button[kind="primary"] {
-    background: linear-gradient(100deg, #2563EB, #7C3AED);
+    background: linear-gradient(100deg, #0EA5E9, #2563EB);
     border: none;
     color: white;
-    box-shadow: 0 5px 15px rgba(59,130,246,.2);
+    box-shadow: 0 5px 15px rgba(56,189,248,.22);
+}
+
+.stButton > button[kind="primary"]:hover {
+    background: linear-gradient(100deg, #0284C7, #1D4ED8);
+    color: white;
 }
 
 
@@ -302,9 +315,9 @@ div[data-testid="stMetric"] [data-testid="stMetricValue"] {
 .stTextInput input,
 .stTextArea textarea,
 .stNumberInput input {
-    background: #17243A !important;
-    color: #E8F0FC !important;
-    border: 1px solid #354966 !important;
+    background: #FFFFFF !important;
+    color: #183B56 !important;
+    border: 1px solid #CFE5F5 !important;
     border-radius: 11px !important;
     padding: 10px 12px;
     transition: all .2s ease;
@@ -313,45 +326,46 @@ div[data-testid="stMetric"] [data-testid="stMetricValue"] {
 .stTextInput input:focus,
 .stTextArea textarea:focus,
 .stNumberInput input:focus {
-    border-color: #3B82F6 !important;
-    box-shadow: 0 0 0 2px rgba(59,130,246,.15);
+    border-color: #38BDF8 !important;
+    box-shadow: 0 0 0 2px rgba(56,189,248,.16);
 }
 
 .stTextInput input::placeholder,
 .stTextArea textarea::placeholder {
-    color: #8496AD !important;
+    color: #94A3B8 !important;
 }
 
 
 
 .stSelectbox div[data-baseweb="select"] > div,
 .stMultiSelect div[data-baseweb="select"] > div {
-    background: #17243A !important;
-    border: 1px solid #354966 !important;
+    background: #FFFFFF !important;
+    border: 1px solid #CFE5F5 !important;
     border-radius: 10px !important;
-    color: #E8F0FC !important;
+    color: #183B56 !important;
 }
 
 .stSelectbox svg,
 .stMultiSelect svg {
-    fill: #94A3B8 !important;
+    fill: #647C91 !important;
+}
+
+.stSelectbox div[data-baseweb="select"] *,
+.stMultiSelect div[data-baseweb="select"] * {
+    color: #183B56 !important;
 }
 
 [data-baseweb="popover"] {
-    background: #17243A !important;
-    border: 1px solid #354966 !important;
+    background: #FFFFFF !important;
+    border: 1px solid #D6E8F7 !important;
 }
 
 [data-baseweb="menu"] {
-    background: #17243A !important;
+    background: #FFFFFF !important;
 }
 
-[data-baseweb="menu"] * {
-    color: #E8F0FC !important;
-}
-
-[data-baseweb="menu"] li:hover {
-    background: #263D60 !important;
+[data-baseweb="option"]:hover {
+    background: #E0F2FE !important;
 }
 
 
@@ -382,23 +396,23 @@ footer {
 }
 
 
-/* Premium Dark Scrollbar */
+/* Premium Sky Blue Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #0B1120;
+    background: #EFF8FF;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #3B82F6, #8B5CF6);
+    background: linear-gradient(180deg, #38BDF8, #60A5FA);
     border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #60A5FA;
+    background: #0284C7;
 }
 
 
@@ -496,17 +510,20 @@ with st.sidebar:
 
     st.markdown(f"""
     <div style="
-        background: #17243A;
-        border: 1px solid #263650;
+        background: linear-gradient(145deg, #FFFFFF, #EAF6FF);
+        border: 1px solid #BAE6FD;
         border-radius: 12px;
         padding: 12px;
         margin-bottom: 12px;
+        box-shadow: 0 4px 14px rgba(56,189,248,.08);
     ">
-        <div style="font-size:11px;color:#94A3B8;">SIGNED IN AS</div>
-        <div style="font-weight:700;color:#E8F0FC;margin-top:4px;">
+        <div style="font-size:11px;color:#647C91;font-weight:700;">
+            SIGNED IN AS
+        </div>
+        <div style="font-weight:700;color:#183B56;margin-top:4px;">
             👤 {user}
         </div>
-        <div style="font-size:11px;color:#60A5FA;margin-top:3px;">
+        <div style="font-size:11px;color:#0284C7;margin-top:3px;">
             {role.title()}
         </div>
     </div>
